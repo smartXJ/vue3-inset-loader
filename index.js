@@ -9,14 +9,14 @@ const {
   getPagesMap,
   initPages,
   getRoute,
-} = require('vite-inset-loader/utils');
+} = require('./utils');
 
 let _init = false;
 let needHandle = false;
 let pagesMap = {};
 
 const myVitePlugin = {
-  name: 'vue-inset-loader',
+  name: 'vue3-inset-loader',
   transform(code, id) {
     if (!_init) {
       _init = true;

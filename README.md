@@ -14,7 +14,7 @@ pnpm i strip-json-comments@3.1.1 @vue/compiler-sfc -D
 ### 第二步 vite.config.js注入loader
 ```
 import { defineConfig } from 'vite'
-import vue3InsetLoaderPlugin from './plugins/vue3-inset-loader/index.ts'
+import vue3InsetLoaderPlugin from './plugins/vue3-inset-loader'
 
 // https://vitejs.dev/config/
 export default defineConfig({

@@ -1,3 +1,4 @@
+
 const fs = require('fs');
 const path = require('path');
 const stripJsonComments = require('strip-json-comments');
@@ -68,6 +69,8 @@ const initPages = (that) => {
 
 // 给非必填项设置缺省值，缺少主要对象返回false
 const initInsetLoader = () => {
+  insetLoader = pagesJson.insetLoader || {}
+  
 	// label：全局标签配置
 	// rootEle：根元素的类型,也支持正则,如匹配任意标签.*
 	insetLoader.label = insetLoader.label || []

@@ -1,11 +1,3 @@
-/*
- * @Author: xiaojun
- * @Date: 2024-01-30 14:53:00
- * @LastEditors: xiaojun
- * @LastEditTime: 2024-01-31 09:08:05
- * @Description: 对应操作
- */
-
 // utils.js remains the same
 
 // vite-plugin.js
@@ -38,7 +30,6 @@ const myVitePlugin = {
     if (!needHandle) {
       return code;
     }
-
     const route = getRoute(id);
     const curPage = pagesMap[route];
     if (curPage) {
@@ -51,13 +42,12 @@ const myVitePlugin = {
         const insertReg = new RegExp(`(<\/${curPage.ele}>$)`)
         // 在匹配的标签之前插入额外标签代码
         templateCode = generateHtmlCode(
-          compiler.template.content,
+          templateCode,
           labelCode,
           insertReg
         )
       } else {
-        templateCode = labelCode + 
-        compiler.descriptor && compiler.descriptor.template ? compiler.descriptor.template.content : '';
+        templateCode = labelCode + templateCode;
       }
       const style = generateStyleCode(compiler.descriptor && compiler.descriptor.styles ? compiler.descriptor.styles : []);
       const script = generateScriptcCode(code);

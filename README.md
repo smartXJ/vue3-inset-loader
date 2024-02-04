@@ -54,7 +54,5 @@ export default defineConfig({
     定义标签名称和内容的键值对
  - `label`(default: `[]`)
     需要全局引入的标签，打包后会在所有页面引入此标签
- - `rootEle`(default: ``)
-    根元素的标签类型，没有时直接放在元素上面（vue3支持非根元素写法）
 
- ✔ `label` 和 `rootEle` 支持在单独页面的style里配置，优先级高于全局配置
+ ✔ `label` 和 支持在单独页面的style里配置，优先级高于全局配置

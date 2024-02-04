@@ -48,7 +48,7 @@ const getPagesMap = () => {
 const getLabelConfig = (json) => {
   return {
     label: (json.style && json.style.label) || insetLoader.label,
-    ele: (json.style && json.style.rootEle) || insetLoader.rootEle
+    // ele: (json.style && json.style.rootEle) || insetLoader.rootEle
   };
 };
 
@@ -72,9 +72,7 @@ const initInsetLoader = () => {
   insetLoader = pagesJson.insetLoader || {}
   
 	// label：全局标签配置
-	// rootEle：根元素的类型,也支持正则,如匹配任意标签.*
 	insetLoader.label = insetLoader.label || []
-	insetLoader.rootEle = insetLoader.rootEle || ""
   const effective = typeof insetLoader.config == 'object' && Object.keys(insetLoader.config).length;
   return effective;
 };

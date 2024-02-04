@@ -1,3 +1,10 @@
+/*
+ * @Author: xiaojun
+ * @Date: 2024-02-04 11:49:42
+ * @LastEditors: xiaojun
+ * @LastEditTime: 2024-02-04 11:55:50
+ * @Description: 对应操作
+ */
 // utils.js remains the same
 
 // vite-plugin.js
@@ -32,34 +39,21 @@ const myVitePlugin = {
     }
     const route = getRoute(id);
     const curPage = pagesMap[route];
-    if (curPage) {
-      const compiler = parse(code);
-      const labelCode = generateLabelCode(curPage.label);
-      let templateCode = compiler.descriptor && compiler.descriptor.template ? compiler.descriptor.template.content : '';
-      // 挂在根标签上
-      if (curPage.ele) {
-        // 匹配标签位置
-        const insertReg = new RegExp(`(<\/${curPage.ele}>$)`)
-        // 在匹配的标签之前插入额外标签代码
-        templateCode = generateHtmlCode(
-          templateCode,
-          labelCode,
-          insertReg
-        )
-      } else {
-        templateCode = labelCode + templateCode;
-      }
-      const style = generateStyleCode(compiler.descriptor && compiler.descriptor.styles ? compiler.descriptor.styles : []);
-      const script = generateScriptcCode(code);
-		// 重组style标签及内容
-      code = `
-        <template>
-          ${templateCode}
-        </template>
-        ${script}
-        ${style}
-      `;
-    }
+    if (!curPage) return code
+    const compiler = parse(code);
+    const labelCode = generateLabelCode(curPage.label);
+    let templateCode = compiler.descriptor && compiler.descriptor.template ? compiler.descriptor.template.content : '';
+    templateCode = labelCode + templateCode;
+    const style = generateStyleCode(compiler.descriptor && compiler.descriptor.styles ? compiler.descriptor.styles : []);
+    const script = generateScriptcCode(code);
+  // 重组style标签及内容
+    code = `
+      <template>
+        ${templateCode}
+      </template>
+      ${script}
+      ${style}
+    `;
     return code;
   },
 };

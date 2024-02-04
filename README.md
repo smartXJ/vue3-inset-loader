@@ -35,8 +35,7 @@ export default defineConfig({
             "abc": "<BaseAbc ref='BaseAbc'></BaseAbc>"
         },
         // 全局配置
-        "label":["confirm"],
-        "rootEle":"div"
+        "label":["confirm"]
     },
     "pages": [
         {
@@ -44,8 +43,7 @@ export default defineConfig({
             "style": {
                 "navigationBarTitleText": "测试页面",
                 // 单独配置，用法跟全局配置一致，优先级高于全局
-                "label": ["confirm","abc"],
-                "rootEle":"div"
+                "label": ["confirm","abc"]
             }
         },
     ]

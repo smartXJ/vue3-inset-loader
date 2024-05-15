@@ -36,6 +36,7 @@ export default defineConfig({
         },
         // 全局配置
         "label":["confirm"]
+        "rootEle":"view"
     },
     "pages": [
         {
@@ -43,7 +44,8 @@ export default defineConfig({
             "style": {
                 "navigationBarTitleText": "测试页面",
                 // 单独配置，用法跟全局配置一致，优先级高于全局
-                "label": ["confirm","abc"]
+                "label": ["confirm","abc"],
+                "rootEle":"view"
             }
         },
     ]
@@ -54,5 +56,7 @@ export default defineConfig({
     定义标签名称和内容的键值对
  - `label`(default: `[]`)
     需要全局引入的标签，打包后会在所有页面引入此标签
+ - `rootEle`(default: ``)
+    目标元素的标签类型，没有时直接放在元素上面（存在rootEle属性时则挂载到该元素中）
 
- ✔ `label` 和 支持在单独页面的style里配置，优先级高于全局配置
+ ✔ `label` 和 `rootEle`支持在单独页面的style里配置，优先级高于全局配置

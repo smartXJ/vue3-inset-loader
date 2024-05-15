@@ -1,3 +1,10 @@
+/*
+ * @Author: xiaojun
+ * @Date: 2024-05-14 17:30:36
+ * @LastEditors: xiaojun
+ * @LastEditTime: 2024-05-15 16:52:47
+ * @Description: 对应操作
+ */
 
 const fs = require('fs');
 const path = require('path');
@@ -48,7 +55,7 @@ const getPagesMap = () => {
 const getLabelConfig = (json) => {
   return {
     label: (json.style && json.style.label) || insetLoader.label,
-    // ele: (json.style && json.style.rootEle) || insetLoader.rootEle
+    ele: (json.style && json.style.rootEle) || insetLoader.rootEle
   };
 };
 
@@ -62,7 +69,7 @@ const initPages = (that) => {
     rootPath = path.resolve(pagesPath, '../');
   }
   rootPath = rootPath.replace(/\\/g, '/')
-
+  console.log(pagesPath, 'pagesPath')
   pagesJson = JSON.parse(stripJsonComments(fs.readFileSync(pagesPath, 'utf8')));
   return initInsetLoader();
 };
@@ -72,7 +79,9 @@ const initInsetLoader = () => {
   insetLoader = pagesJson.insetLoader || {}
   
 	// label：全局标签配置
+	// rootEle：目标元素类型
 	insetLoader.label = insetLoader.label || []
+	insetLoader.rootEle = insetLoader.rootEle || ""
   const effective = typeof insetLoader.config == 'object' && Object.keys(insetLoader.config).length;
   return effective;
 };

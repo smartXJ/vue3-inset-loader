@@ -2,7 +2,7 @@
  * @Author: xiaojun
  * @Date: 2024-05-14 17:30:36
  * @LastEditors: xiaojun
- * @LastEditTime: 2024-05-15 16:57:31
+ * @LastEditTime: 2024-05-15 17:03:05
  * @Description: 对应操作
  */
 // utils.js remains the same
@@ -36,17 +36,10 @@ const myVitePlugin = {
       _init = true;
       init(this);
     }
-    // 如果文件的扩展名不是 .vue，那么我们就跳过这个文件
-    if (!id.endsWith('.vue')) {
-      return code;
-    }
 
-    if (!needHandle) {
-      return code;
-    }
     const route = getRoute(id);
     const curPage = pagesMap[route];
-    if (curPage) {
+    if (id.endsWith('.vue') && needHandle &&curPage) {
       try {
         const compiler = parse(code);
         const labelCode = generateLabelCode(curPage.label);

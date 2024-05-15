@@ -22,6 +22,7 @@ export default defineConfig({
     sourcemap: process.env.NODE_ENV === 'development',
   },
   plugins: [
+    // 注入loader，放在plugins的首位
     vue3InsetLoaderPlugin
   ],
 })

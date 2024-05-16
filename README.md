@@ -61,3 +61,6 @@ export default defineConfig({
     目标元素的标签类型，没有时直接放在元素上面（存在rootEle属性时则挂载到该元素中）
 
  ✔ `label` 和 `rootEle`支持在单独页面的style里配置，优先级高于全局配置
+
+### 一些问题的解决
+<span style="color:red">Unexpected token } in JSON at position 256</span>，如果出现运行发现这样的错误，请删除pages.json文件 多余的空格
